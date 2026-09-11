@@ -1,14 +1,14 @@
 import { Link, useParams } from 'react-router-dom'
-import { products } from '../data'
+import { books } from '../data.js' 
 
 export default function ShopPage() {
   const { productId } = useParams()
 
   if (productId) {
-    const product = products.find((item) => item.id === productId)
+    const product = books.find((item) => item.id === productId)
 
     if (!product) {
-      return <div className="page-shell simple-message">The bird you are looking for is not available.</div>
+      return <div className="page-shell simple-message">The book   you are looking for is not available.</div>
     }
 
     return (
@@ -57,7 +57,7 @@ export default function ShopPage() {
       </div>
 
       <div className="product-grid shop-grid">
-        {products.map((product) => (
+        {books.map((product) => (
           <article key={product.id} className="product-card">
             <img src={product.image} alt={product.name} />
             <div className="product-info">

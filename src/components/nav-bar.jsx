@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NavBar({ cartCount, counter, handleCartRemove }) {
   return (
     <header className="sticky top-0 z-10 box-border flex w-screen max-w-none items-center justify-between gap-6 bg-[rgba(34,28,20,0.88)] px-6 py-4 text-white shadow-[0_12px_32px_rgba(82,60,26,0.14)] backdrop-blur-[10px] max-[960px]:flex-col max-[960px]:items-start max-[960px]:gap-4">
@@ -8,10 +10,10 @@ function NavBar({ cartCount, counter, handleCartRemove }) {
       </a>
 
       <nav className="absolute left-1/2 flex -translate-x-1/2 flex-wrap items-center justify-center gap-3 max-[960px]:static max-[960px]:mx-0 max-[960px]:w-full max-[960px]:translate-x-0 max-[960px]:justify-start" aria-label="Main navigation">
-        <a className="rounded-lg bg-[#ffd79c] px-3 py-2 font-semibold text-[#1d1307] transition-colors duration-200" href="#shop">Shop</a>
-        <a className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" href="#new">New arrivals</a>
-        <a className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" href="#collections">Collections</a>
-        <a className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" href="#about">About</a>
+        <Link className="rounded-lg bg-[#ffd79c] px-3 py-2 font-semibold text-[#1d1307] transition-colors duration-200" to="/shop">Shop</Link>
+        <Link className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" to="/new">New arrivals</Link>
+        <Link className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" to="/collections">Collections</Link>
+        <Link className="rounded-lg px-3 py-2 font-semibold text-[rgba(255,255,255,0.78)] transition-colors duration-200 hover:bg-[#ffd79c] hover:text-[#1d1307]" to="/about">About</Link>
       </nav>
 
       <div className="flex items-center justify-end gap-2 max-[960px]:ml-0 max-[960px]:w-full max-[960px]:justify-between">
