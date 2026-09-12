@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NavBar({ cartCount, counter, handleCartRemove }) {
+function NavBar({ cartCount }) {
   return (
     <header className="sticky top-0 z-10 box-border flex w-screen max-w-none items-center justify-between gap-6 bg-[rgba(34,28,20,0.88)] px-6 py-4 text-white shadow-[0_12px_32px_rgba(82,60,26,0.14)] backdrop-blur-[10px] max-[960px]:flex-col max-[960px]:items-start max-[960px]:gap-4">
       <a className="flex items-center gap-3" href="#home" aria-label="BookNook">
@@ -21,14 +21,12 @@ function NavBar({ cartCount, counter, handleCartRemove }) {
           Search
         </button>
         <a className="px-3 py-2 font-semibold text-[rgba(255,255,255,0.82)] transition-colors duration-200 hover:text-[#ffd79c]" href="#account">Account</a>
-        <button
+        <Link
           className="rounded-lg bg-linear-to-br from-[#f7c87d] to-[#db8c38] px-4 py-2 text-[#1c140a]"
-          type="button"
-          onClick={handleCartRemove}
-          style={{ fontSize: `${14 + counter}px` }}
+          to="/cart"
         >
           Cart <span aria-hidden="true">({cartCount})</span>
-        </button>
+        </Link>
       </div>
     </header>
   );

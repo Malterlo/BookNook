@@ -1,52 +1,63 @@
 import Card from "./components/card";
 import NavBar from "./components/nav-bar";
-import FetchAPI from "./components/fetchAPI.jsx";
 import { books } from "./data.js";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ShopPage from "./pages/ShopPage.jsx";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import CartPage from "./pages/CartPage.jsx";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
-  const [counter, setCounter] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
-  const handleCartAdd = () => {
-    setCartCount((cartCount) => cartCount + 1);
-    setCounter((counter) => counter + 1);
+  const handleCartAdd = (book) => {
+    setCartItems((prevItems) => [...prevItems, book]);
   };
 
-  const handleCartRemove = () => {
-    setCartCount((cartCount) => Math.max(0, cartCount - 1));
-    setCounter((counter) => Math.max(0, counter - 1));
+  const handleCartRemove = (bookId) => {
+    setCartItems((prevItems) => {
+      const itemIndex = prevItems.findIndex((item) => item.id === bookId);
+
+      if (itemIndex === -1) {
+        return prevItems;
+      }
+
+      return prevItems.filter((_, index) => index !== itemIndex);
+    });
   };
+
+  const shopContent = (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {books.map((book) => (
+        <Card
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          author={book.author}
+          image={book.image}
+          description={book.description}
+          price={book.price}
+          handleCartAdd={handleCartAdd}
+        />
+      ))}
+    </div>
+  );
 
   return (
-    <>
-      <BrowserRouter>
-      
-      <NavBar cartCount={cartCount} counter={counter} handleCartRemove={handleCartRemove} />
+    <BrowserRouter>
+      <NavBar cartCount={cartItems.length} />
       <Routes>
-        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/" element={<Navigate to="/shop" replace />} />
+        <Route path="/shop" element={shopContent} />
+        <Route
+          path="/cart"
+          element={
+            <CartPage
+              cartItems={cartItems}
+              handleCartRemove={handleCartRemove}
+            />
+          }
+        />
       </Routes>
-      
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {books.map((book) => {
-              return (
-                <Card
-                  key={book.id}
-                  id={book.id}
-                  title={book.title}
-                  author={book.author}
-                  image={book.image}
-                  description={book.description}
-                  price={book.price}
-                  handleCartAdd={handleCartAdd} />
-              );
-            })}
-          </div>
-        </BrowserRouter>
-    </>
-    
+    </BrowserRouter>
   );
 }
 
