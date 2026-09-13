@@ -4,6 +4,7 @@ import { books } from "./data.js";
 import { useState } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import CartPage from "./pages/CartPage.jsx";
+import { ThemeProvider } from "./context/themeProvider.jsx";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -42,6 +43,7 @@ function App() {
   );
 
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <NavBar cartCount={cartItems.length} />
       <Routes>
@@ -58,6 +60,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

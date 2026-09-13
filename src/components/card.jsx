@@ -1,30 +1,30 @@
 
 const Card = ({ id, title, author, description, price, image, handleCartAdd}) => {
   return (
-    <div className="flex flex-col w-full justify-center bg-white shadow-md rounded-lg p-6">
+    <div className="flex flex-col justify-center w-full p-6 bg-white rounded-lg shadow-md">
       <div>
-        <h3 className="text-lg text-center font-bold mb-2">{title}</h3>
-        <p className="text-gray-500 italic mb-2">by {author}</p>
+        <h3 className="mb-2 text-lg font-bold text-center">{title}</h3>
+        <p className="mb-2 italic text-gray-500">by {author}</p>
       </div>
       <div className="grow">
       <img
         src={image}
         alt={`Cover of ${title}`}
-        className="w-full object-cover mb-4"
+        className="object-cover w-full mb-4"
       />
       </div>
-      <div className="grow">
-      <p className="text-gray-600 pt-5">{description}</p>
+      <div className="grow">ackground-color: #29241e;x
+      <p className="pt-5 text-gray-600">{description}</p>
       </div>
 
       <button 
-        className="bg-yellow-400 hover:bg-yellow-600 text-white font-bold mt-4 py-2 px-4 rounded"
+        className="px-4 py-2 mt-4 font-bold text-white bg-yellow-400 rounded hover:bg-yellow-600"
         onClick={() => handleCartAdd({ id, title, price })}
       >
         <span className="flex flex-col text-xl font-bold text-red-900">
           ${price.toFixed(2)}
         </span>{" "}
-        <div className="text-red-700 font-bold">Add to Cart</div>
+        <div className="font-bold text-red-700">Add to Cart</div>
       </button>
     </div>
   );

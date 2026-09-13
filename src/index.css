@@ -52,3 +52,35 @@ a {
 #root {
   min-height: 100vh;
 }
+
+.dark {
+  min-height: 100vh;
+  color: #f7f2e8;
+  background: #171512;
+  color-scheme: dark;
+}
+
+.dark .bg-white {
+  background-color: #29241e;
+}
+
+.dark .bg-\[\#fffdf9\] {
+  background-color: #211e1a;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-600 {
+  color: #c8bcae;
+}
+
+.dark main {
+  border-color: rgba(255, 215, 156, 0.16);
+  background-color: rgba(41, 36, 30, 0.82);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark p {
+  color: inherit;
+}

@@ -16,7 +16,7 @@ export default function ShopPage() {
         <Link to="/shop" className="mb-[22px] inline-block font-bold text-[#8a5a2c]">← Back to shop</Link>
         <div className="grid gap-7.5 lg:grid-cols-2">
           <div className="min-h-130 overflow-hidden rounded-[26px]">
-            <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+            <img src={product.image} alt={product.name} className="object-cover w-full h-full" />
           </div>
           <div>
             <p className="m-0 text-[0.73rem] font-extrabold uppercase tracking-[0.12em] text-[#b6672b]">{product.category}</p>
@@ -59,7 +59,7 @@ export default function ShopPage() {
       <div className="grid grid-cols-1 gap-5.5 sm:grid-cols-2 lg:grid-cols-3">
         {books.map((product) => (
           <article key={product.id} className="overflow-hidden rounded-3xl border border-[rgba(101,67,39,0.1)] bg-[rgba(255,255,255,0.72)] shadow-[0_12px_28px_rgba(57,38,15,0.05)]">
-            <img src={product.image} alt={product.name} className="h-65 w-full object-cover" />
+            <img src={product.image} alt={product.name} className="object-cover w-full h-65" />
             <div className="p-4.5 pb-5">
               <div className="flex items-center justify-between gap-2 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-[#8a5a2c]">
                 <span>{product.category}</span>
