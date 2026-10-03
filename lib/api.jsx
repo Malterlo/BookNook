@@ -1,0 +1,1 @@
+export const API_COMMENTS = import.meta.env.VITE_API_COMMENTS || "https://dummyjson.com/comments";
