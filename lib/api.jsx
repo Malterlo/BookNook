@@ -1,1 +1,1 @@
-export const API_COMMENTS = import.meta.env.VITE_API_COMMENTS || "https://dummyjson.com/comments";
+export const API_BASE = import.meta.env.VITE_API_BASE || "https://dummyjson.com";

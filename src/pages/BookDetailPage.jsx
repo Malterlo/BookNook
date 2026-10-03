@@ -6,16 +6,22 @@ import { getComments } from "../service/getComments.service.jsx";
 export default function BookDetailPage({ handleCartAdd }) {
   const { bookId } = useParams();
   const book = books.find((item) => item.id === Number(bookId));
-  const [topComments, setTopComments] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     let cancelled = false;
-
-    getComments().then(({ comments }) => {
-      if (!cancelled) {
-        setTopComments(comments.slice(0, 6));
+    const fetchComments = (async () => {
+      try {
+        const comments = await getComments();
+        if (!cancelled) {
+          setComments(comments.slice(0, 6));
+        }
+      } catch (error) {
+        console.error("Error fetching comments:", error);
       }
     });
+
+    fetchComments();
 
     return () => {
       cancelled = true;
@@ -69,11 +75,11 @@ export default function BookDetailPage({ handleCartAdd }) {
           </h2>
         </div>
         <span className="rounded-full border border-[#d8a15c] bg-[#f3dfbd] px-3 py-1 text-sm font-bold text-[#7a3f18] dark:border-[#8c481c] dark:bg-[#3a3025] dark:text-[#f5c86d]">
-          {topComments.length} of 6
+          {comments.length} of 6
         </span>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
-        {topComments.map((comment) => (
+        {comments.map((comment) => (
           <article
             className="rounded-xl border border-[#d8c5aa] bg-white/70 p-4 transition-shadow hover:shadow-[0_8px_18px_rgba(82,60,26,0.1)] dark:border-[#5b4937] dark:bg-[#211e1a] dark:hover:shadow-[0_8px_18px_rgba(0,0,0,0.22)]"
             key={comment.id}
